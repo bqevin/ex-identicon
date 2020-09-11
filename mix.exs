@@ -22,7 +22,7 @@ defmodule Identicon.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.12"},
-      # {:egd, github: "erlang/egd"}
+      {:egd, github: "erlang/egd"}
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
   end
