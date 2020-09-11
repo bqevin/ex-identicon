@@ -24,3 +24,4 @@ identicon-*.tar
 
 /.idea/
 
+/.elixir_ls/
