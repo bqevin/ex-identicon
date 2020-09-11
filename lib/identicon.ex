@@ -40,7 +40,7 @@ defmodule Identicon do
 
   def build_pixel_map(%Identicon.Image{grid: grid} = input) do
     pixel_map =
-      Enum.map grid, fn {_sq, indx} ->
+      Enum.map(grid, fn {_sq, indx} ->
         # this is horizontal vertex
         horizontal = rem(indx, 5) * 50
         # this is vertical vertex
@@ -52,16 +52,16 @@ defmodule Identicon do
         # :egd.filledRectangle(Image::egd_image(), P1::point(), P2::point(), Color::color())
         # where P1::point()  = top_left, P2::point() = bottom_right
         {top_left, bottom_right}
-      end
+      end)
 
-      %Identicon.Image{input | pixel_map: pixel_map}
+    %Identicon.Image{input | pixel_map: pixel_map}
   end
 
   def filter_odd_squares(%Identicon.Image{grid: grid} = input) do
     grid =
-      Enum.filter grid, fn {sq, _indx} ->
+      Enum.filter(grid, fn {sq, _indx} ->
         rem(sq, 2) == 0
-      end
+      end)
 
     %Identicon.Image{input | grid: grid}
   end
@@ -84,7 +84,7 @@ defmodule Identicon do
   def prep_color(%Identicon.Image{hex: hex_list} = input) do
     [r, g, b | _] = hex_list
 
-    %Identicon.Image{input | color: [r, g, b]}
+    %Identicon.Image{input | color: {r, g, b}}
   end
 
   def hash_input(input) do
@@ -94,5 +94,4 @@ defmodule Identicon do
 
     %Identicon.Image{hex: hex}
   end
-
 end
