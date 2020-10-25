@@ -25,3 +25,5 @@ identicon-*.tar
 /.idea/
 
 /.elixir_ls/
+
+.DS_Store
